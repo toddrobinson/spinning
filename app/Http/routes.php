@@ -15,6 +15,7 @@ Route::get('/', 'PagesController@welcome');
 
 
 Route::get('home', 'HomeController@index');
+Route::resource('tracks', 'TracksController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
