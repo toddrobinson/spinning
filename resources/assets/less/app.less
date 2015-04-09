@@ -1,8 +1,39 @@
+//Custom Styles
 @import "bootstrap/bootstrap";
 
 @btn-font-weight: 300;
 @font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
 
-body, label, .checkbox label {
-	font-weight: 300;
+//Brand Colors
+@brandPurple:  #8C66B2;
+@brandGreen: #4db27e;
+
+@import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Istok+Web:400,700,400italic);
+
+body {
+  font-family: 'Istok Web;', sans-serif;
 }
+
+
+/* HOMEPAGE STYLES */
+.homeHero {
+  background-image: url("/images/bicycle-bike-black-and-white-4409.jpeg");
+  height: 100vh;
+  background-position:center;
+  background-repeat: no-repeat;
+	max-width: 100vw;
+
+	>div {
+		margin-top: 30vh;
+	}
+
+	.welcomeText {
+		background-color: rgba(39, 39, 39, 0.8);
+		border-radius: 2px ;
+		color: #FFFFFF;
+		padding: .5em;
+		margin: .25em;
+	}
+}
+
+/* END HOMEPAGE STYLES */
