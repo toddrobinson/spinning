@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers;
-
+use App\Track;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Request;
 
 class TracksController extends Controller {
 
@@ -14,8 +14,9 @@ class TracksController extends Controller {
 	 */
 	public function index()
 	{
-		//
-		return("testing");
+		$tracks = Track::all();
+
+		return view('tracks.index', compact('tracks'));
 	}
 
 	/**
@@ -25,7 +26,7 @@ class TracksController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('tracks.create');
 	}
 
 	/**
@@ -36,6 +37,8 @@ class TracksController extends Controller {
 	public function store()
 	{
 		//
+		$input = Request::all();
+		return $input;
 	}
 
 	/**
@@ -47,7 +50,22 @@ class TracksController extends Controller {
 	public function show($id)
 	{
 
-		return("Testing" . " " . $id);
+		$track = Track::find($id);
+		return view('tracks.show', compact('track'));
+
+	}
+	/*
+	*
+	*
+	*
+	*
+	*/
+	public function intervalData($id)
+	{
+		$track = Track::find($id);
+		$trackIntervalData = $track->intervalData;
+		return($trackIntervalData);
+
 	}
 
 	/**

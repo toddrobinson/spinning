@@ -12,9 +12,11 @@
 */
 
 Route::get('/', 'PagesController@welcome');
+Route::get('about' ,'PagesController@about');
 
 
 Route::get('home', 'HomeController@index');
+Route::get('tracks/intervals/{id}', 'TracksController@intervalData');
 Route::resource('tracks', 'TracksController');
 
 Route::controllers([

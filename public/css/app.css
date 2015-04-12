@@ -6230,6 +6230,10 @@ button.close {
 body {
   font-family: 'Istok Web;', sans-serif;
 }
+.mainNav.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
 /* HOMEPAGE STYLES */
 .homeHero {
   background-image: url("/images/bicycle-bike-black-and-white-4409.jpeg");
@@ -6249,5 +6253,15 @@ body {
   margin: .25em;
 }
 /* END HOMEPAGE STYLES */
+/* SIMPLE TRACK DISPLAY */
+.trackSimpleInfo span {
+  font-size: 2em;
+  color: #4db27e;
+}
+.tracksIndex article {
+  padding: .5em;
+  border-bottom: 2px solid #8c66b2;
+  margin-bottom: 1em;
+}
 
 /*# sourceMappingURL=app.css.map */

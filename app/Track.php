@@ -6,7 +6,14 @@ class Track extends Model {
 
 	protected $guarded = [
 		'id',
-		
+
+	];
+
+	protected $fillable = [
+		'title',
+		'numberOfIntervals',
+		'length',
+		'intervalData'
 	];
 
 }
