@@ -6273,5 +6273,8 @@ form .intervalItem > * {
 form .intervalItem p {
   font-size: 1.5em;
 }
+.row.chartRow {
+  margin-top: 2em;
+}
 
 /*# sourceMappingURL=app.css.map */

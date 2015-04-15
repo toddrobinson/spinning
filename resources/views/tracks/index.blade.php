@@ -16,7 +16,7 @@
       <article>
           <p><a href="/tracks/{{$track->id}}"><h2><small>Title: </small>{{$track->title}}</h2></a></p>
           <p>{{$track->numberOfIntervals}} Intervals</p>
-          <p>{{$track->length/60}} minutes long</p>
+          <p>{{$track->length}} minutes long</p>
       </article>
       @endforeach
   </div>

@@ -34,11 +34,11 @@ class TracksController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Requests\CreateTrackRequest $request)
 	{
-		//
-		$input = Request::all();
-		return $input;
+		//Body of function won't fire if validation fails.
+		Track::create($request->all());
+		return redirect('tracks');
 	}
 
 	/**
