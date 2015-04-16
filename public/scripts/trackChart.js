@@ -2,9 +2,7 @@
 $(document).ready(function(){
 
   var trackID = $(".trackTitle").attr("trackid");
-  console.log(trackID);
   var trackUrl = "/tracks/intervals/" + trackID;
-  console.log(trackUrl);
   var coord = [];
   $.ajax({
     type:"GET",
@@ -12,7 +10,7 @@ $(document).ready(function(){
     success: function(data) {
       coord = createChart(data);
       createTable(data);
-      console.log(coord);
+      drawGraph();
     },
     error: function() {console.log("It's dead, Jim");},
   });
@@ -47,6 +45,39 @@ $(document).ready(function(){
     }
   }
 
+  function drawGraph() {
+
+    google.load('visualization', '1', {packages: ['corechart', 'line'], 'callback' : drawLineColors});
+    //google.setOnLoadCallback(drawLineColors);
+
+    function drawLineColors() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Track');
+
+      var rows = coord;
+
+      data.addRows(rows);
+
+      var options = {
+        hAxis: {
+          title: 'Time (minutes)'
+        },
+        vAxis: {
+          title: 'Intensity'
+        },
+        colors: ['#a52714', '#097138'],
+        
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+
+
+
+
+  }
 
 
 
