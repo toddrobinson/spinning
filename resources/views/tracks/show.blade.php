@@ -18,14 +18,25 @@
 </div>
 <div class="row chartRow">
   <div class="col-md-12 text-center">
-    <canvas id="trackChart" width="900" height="400"></canvas>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Interval #</th>
+          <th>Interval Length <small>(minutes)</small></th>
+          <th>Interval Intensity</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
   </div>
 </div>
 
 @stop
 
 @section('footer')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script src="/scripts/trackChart.js"></script>
 
 
