@@ -7,12 +7,15 @@
 <div class="row">
   <div class="col-md-12 trackSimpleInfo text-center">
 
-      <h1 class="text-center trackTitle" trackId="{{$track->id}}">{{$track->title}} <small>by {{$track->user_id}}</small></h1>
+      <h1 class="text-center trackTitle" trackId="{{$track->id}}">{{$track->title}} <small>by {{$track->user->name}}</small></h1>
       <div class="col-md-6">
         <span>{{$track->numberOfIntervals}} Intervals</span>
       </div>
       <div class="col-md-6">
         <span>{{$track->length}} minutes long</span>
+      </div>
+      <div class="col-md-12 text-center">
+        <a class="btn btn-primary" href="#" role="button">Play this track!</a>
       </div>
   </div>
 </div>

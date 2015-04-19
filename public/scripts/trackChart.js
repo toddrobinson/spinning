@@ -70,7 +70,7 @@ $(document).ready(function(){
           maxValue: 10,
           title: 'Intensity'
         },
-        colors: ['#a52714', '#097138'],
+        colors: ['#5cb85c'],
 
       };
       var chart = new google.charts.Line(document.getElementById('chart_div'));

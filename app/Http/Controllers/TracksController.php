@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Request;
 use Auth;
+use Flash;
 
 class TracksController extends Controller {
 
@@ -49,7 +50,7 @@ class TracksController extends Controller {
 		//Body of function won't fire if validation fails.
 		$track = new Track($request->all());
 		Auth::user()->tracks()->save($track);
-		//Track::create($request->all());
+		Flash::success('Track Created');
 		return redirect('tracks');
 	}
 

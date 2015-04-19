@@ -4,9 +4,7 @@
 @btn-font-weight: 300;
 @font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
 
-//Brand Colors
-@brandPurple:  #8C66B2;
-@brandGreen: #4db27e;
+
 
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Istok+Web:400,700,400italic);
 
@@ -48,7 +46,7 @@ body {
 
 	span {
 		font-size: 2em;
-		color: @brandGreen;
+		color: @brand-success;
 	}
 }
 //
@@ -58,7 +56,7 @@ body {
 .tracksIndex {
 	article {
 		padding: .5em;
-		border-bottom: 2px solid @brandPurple;
+		border-bottom: 2px solid @brand-primary;
 		margin: 1em;
 	}
 }
@@ -95,5 +93,19 @@ form .intervalItem {
 .intervalTable {
 	tbody {
 		display: none;
+	}
+}
+// end chart
+
+
+//Flash messages
+div.alert {
+	margin: 2em;
+}
+
+//
+div.intervalTable {
+	thead {
+		cursor: pointer;
 	}
 }
