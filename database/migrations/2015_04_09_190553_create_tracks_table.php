@@ -15,11 +15,18 @@ class CreateTracksTable extends Migration {
 		Schema::create('tracks', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('user_id')->unsigned();
 			$table->string('title');
 			$table->integer('numberOfIntervals');
 			$table->json('intervalData');
 			$table->integer('length');
 			$table->timestamps();
+
+
+			$table->foreign('user_id')
+						->references('id')
+						->on('users')
+						->onDelete('cascade');
 		});
 	}
 

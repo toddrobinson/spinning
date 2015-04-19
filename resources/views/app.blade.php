@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Spinning Inside - @yield('title')</title>
+	<title>Indoor Spinning - @yield('title')</title>
 	<link href="{{ elixir('css/app.css')}}" rel="stylesheet">
 
 	<!-- Fonts -->

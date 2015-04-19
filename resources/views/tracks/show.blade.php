@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-md-12 trackSimpleInfo text-center">
 
-      <h1 class="text-center trackTitle" trackId="{{$track->id}}"><small>Title: </small>{{$track->title}}</h1>
+      <h1 class="text-center trackTitle" trackId="{{$track->id}}">{{$track->title}} <small>by {{$track->user_id}}</small></h1>
       <div class="col-md-6">
         <span>{{$track->numberOfIntervals}} Intervals</span>
       </div>
@@ -16,13 +16,14 @@
       </div>
   </div>
 </div>
-<div class="row">
+<div class="row chartContainer">
   <div class="col-md-12">
     <div id="chart_div"></div>
   </div>
 </div>
-<div class="row">
+<div class="row intervalTable">
   <div class="col-md-12 text-center">
+
     <table class="table table-bordered table-striped">
       <thead>
         <tr>

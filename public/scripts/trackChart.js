@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
-
+  $("thead").on("click", function(){
+    $("table").find("tbody").fadeToggle();
+  });
   var trackID = $(".trackTitle").attr("trackid");
   var trackUrl = "/tracks/intervals/" + trackID;
   var coord = [];
@@ -47,7 +49,7 @@ $(document).ready(function(){
 
   function drawGraph() {
 
-    google.load('visualization', '1', {packages: ['corechart', 'line'], 'callback' : drawLineColors});
+    google.load('visualization', '1.1', {packages: ['line'], 'callback' : drawLineColors});
     //google.setOnLoadCallback(drawLineColors);
 
     function drawLineColors() {
@@ -64,14 +66,17 @@ $(document).ready(function(){
           title: 'Time (minutes)'
         },
         vAxis: {
+          minValue: 1,
+          maxValue: 10,
           title: 'Intensity'
         },
         colors: ['#a52714', '#097138'],
-        
-      };
 
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
+      };
+      var chart = new google.charts.Line(document.getElementById('chart_div'));
+      //var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      //chart.draw(data, options);
+      chart.draw(data, google.charts.Line.convertOptions(options));
     }
 
 

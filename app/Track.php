@@ -16,4 +16,15 @@ class Track extends Model {
 		'intervalData'
 	];
 
+
+	/*
+	* An article belongs to one user.
+	*
+	*
+	*/
+	public function user()
+	{
+		return $this->belongsTo('App\User');
+	}
+
 }

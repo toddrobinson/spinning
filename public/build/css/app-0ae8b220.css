@@ -6273,8 +6273,12 @@ form .intervalItem > * {
 form .intervalItem p {
   font-size: 1.5em;
 }
-.row.chartRow {
+.row.chartContainer {
   margin-top: 2em;
+  margin-bottom: 2em;
+}
+.intervalTable tbody {
+  display: none;
 }
 
 /*# sourceMappingURL=app.css.map */

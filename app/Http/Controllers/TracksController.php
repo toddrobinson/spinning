@@ -4,8 +4,18 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Request;
+use Auth;
 
 class TracksController extends Controller {
+
+	public function __construct()
+	{
+		$this->middleware('auth', ['only' => 'create']);
+	}
+
+
+
+
 
 	/**
 	 * Display a listing of the resource.
@@ -37,7 +47,9 @@ class TracksController extends Controller {
 	public function store(Requests\CreateTrackRequest $request)
 	{
 		//Body of function won't fire if validation fails.
-		Track::create($request->all());
+		$track = new Track($request->all());
+		Auth::user()->tracks()->save($track);
+		//Track::create($request->all());
 		return redirect('tracks');
 	}
 
@@ -65,6 +77,18 @@ class TracksController extends Controller {
 		$track = Track::find($id);
 		$trackIntervalData = $track->intervalData;
 		return($trackIntervalData);
+
+	}
+
+
+	/*
+	* Show user tracks.
+	*
+	*/
+	public function userTracks($id)
+	{
+		$tracks =  Track::where('user_id', $id)->get();
+		return view('tracks.userTracks', compact('tracks'));
 
 	}
 
