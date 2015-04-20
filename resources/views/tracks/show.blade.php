@@ -15,7 +15,7 @@
         <span>{{$track->length}} minutes long</span>
       </div>
       <div class="col-md-12 text-center">
-        <a class="btn btn-primary" href="#" role="button">Play this track!</a>
+        <a class="btn btn-primary" href="/tracks/play/{{$track->id}}" role="button">Play this track!</a>
       </div>
   </div>
 </div>

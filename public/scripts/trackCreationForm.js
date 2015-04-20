@@ -25,8 +25,8 @@ function addInterval() {
   $("input#numberOfIntervals").val(numIntervals + 1);
   var nextInterval = numIntervals + 1;
   var title = "<p>Interval " + nextInterval  + "</p>";
-  var length = 'Length(minutes):<input required type="number" value="1" min="1" class="intervalLength"></input>';
-  var intensity = 'Intensity(1-10)<input required type="number" min="1" max="10" class="intervalIntensity"></input>';
+  var length = '<label>Length(minutes):</label><input required type="number" value="1" min="1" class="intervalLength form-control"></input>';
+  var intensity = '<label>Intensity(1-10)</label><input required type="number" min="1" max="10" class="intervalIntensity form-control"></input>';
   var button = '<input class="btn btn-danger" id="removeInterval" type="button" value="Remove" readonly>'
   var intervalItem = $('<div class="intervalItem form-group" id='+ nextInterval + '>' + title  + length + intensity + button + '<hr></div>');
   $("div#intervalContainer").append(intervalItem);

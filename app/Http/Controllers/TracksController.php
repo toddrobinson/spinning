@@ -11,7 +11,7 @@ class TracksController extends Controller {
 
 	public function __construct()
 	{
-		$this->middleware('auth', ['only' => 'create']);
+		$this->middleware('auth', ['except' => ['index' , 'show' , 'intervalData' , 'userTracks']]);
 	}
 
 
@@ -91,6 +91,17 @@ class TracksController extends Controller {
 		$tracks =  Track::where('user_id', $id)->get();
 		return view('tracks.userTracks', compact('tracks'));
 
+	}
+
+	/*
+	*Play individual track
+	*
+	*
+	*/
+	public function playTrack($id)
+	{
+		$track = Track::find($id);
+		return view('tracks.playTrack', compact('track'));
 	}
 
 	/**

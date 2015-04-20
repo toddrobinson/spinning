@@ -23,8 +23,8 @@
   <div id="intervalContainer">
     <div class="intervalItem form-group" id="1">
       <p>Interval 1</p>
-      Length(minutes):<input required type="number" value="1" min="1" class="intervalLength">
-      Intensity(1-10)<input required min="1" max="10" type="number" class="intervalIntensity">
+      <label>Length(minutes):</label><input required type="number" value="1" min="1" class="intervalLength form-control">
+      <label>Intensity(1-10)</label><input required min="1" max="10" type="number" class="intervalIntensity form-control">
       <hr>
     </div>
   </div>
