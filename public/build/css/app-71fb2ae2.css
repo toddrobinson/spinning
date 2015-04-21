@@ -6264,6 +6264,9 @@ body {
   border-bottom: 2px solid #ff2b4f;
   margin: 1em;
 }
+.tracksIndex article strong {
+  font-size: 1.5em;
+}
 form .intervalItem {
   display: none;
 }
@@ -6293,6 +6296,15 @@ div.alert {
 }
 div.intervalTable thead {
   cursor: pointer;
+}
+.progress .progress-bar {
+  transition: .5s all ease;
+}
+.progress-.totalCompletion {
+  margin-top: 3em;
+}
+#intensityBar {
+  height: 2.8em;
 }
 
 /*# sourceMappingURL=app.css.map */

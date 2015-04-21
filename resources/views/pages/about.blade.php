@@ -10,7 +10,7 @@
     <ul>
       <li>Capstone Project by Todd S Robinson</li>
       <li>Spring 2015</li>
-      <li>SUNY POLY</li>
+      <li><i class="fa fa-graduation-cap"></i> SUNY POLY <i class="fa fa-graduation-cap"></i> </li>
     </ul>
   </div>
 </div>
