@@ -5,8 +5,8 @@
 @section('content')
 </div>
 <div class="row homeHero">
-	<div class="col-md-6 col-md-offset-3 text-center">
-		<div class="welcomeText">
+	<div class="col-md-12 text-center">
+		<div class="welcomeText center-block">
 			<h1>Welcome to Indoor Spinning</h1>
 			<span>Train inside on your bicycle</span>
 		</div>

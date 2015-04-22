@@ -11,7 +11,7 @@ class TracksController extends Controller {
 
 	public function __construct()
 	{
-		$this->middleware('auth', ['except' => ['index' , 'show' , 'intervalData' , 'userTracks']]);
+		$this->middleware('auth', ['except' => ['index' , 'show' , 'intervalData' , 'userTracks' , 'playTrack']]);
 	}
 
 

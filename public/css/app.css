@@ -6245,13 +6245,13 @@ body {
 }
 .homeHero > div {
   margin-top: 30vh;
+  padding: 0;
 }
 .homeHero .welcomeText {
   background-color: rgba(39, 39, 39, 0.8);
   border-radius: 2px ;
   color: #FFFFFF;
   padding: .5em;
-  margin: .25em;
 }
 /* END HOMEPAGE STYLES */
 /* SIMPLE TRACK DISPLAY */
