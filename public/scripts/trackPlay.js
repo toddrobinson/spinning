@@ -1,7 +1,9 @@
 var runTrack = function() {
   var pub  = {};
-  var intervalNumber = 1;
-
+  var currentIntervalNumber = 1;
+  var minutesLeftInCurrentInterval = 0;
+  var secondsLeftInCurrentInterval = 0;
+  var passThroughs = 0;
 
   pub.getData = function () {
   var trackID = $(".trackTitle").attr("trackid");
@@ -18,13 +20,37 @@ var runTrack = function() {
 };
 
 
-  pub.nextInterval = function() {
-    if (intervalNumber >= pub.intervalData.intervals.length )
+  pub.nextInterval = function(totalMinutesPassed) {
+    if (currentIntervalNumber >= pub.intervalData.intervals.length && totalMinutesPassed == pub.totalLength)
     {
+      trackComplete();
       return false;
     }
-    intervalNumber += 1;
-    $('#currentIntervalNum').text(intervalNumber);
+
+    var minInInterval = pub.intervalData.intervals[currentIntervalNumber - 1].intervalLength;
+    if (passThroughs == 0) {
+      minutesLeftInCurrentInterval = minInInterval;
+      setLevel();
+    }
+    if (secondsLeftInCurrentInterval == 0) {
+      secondsLeftInCurrentInterval = 59;
+      minutesLeftInCurrentInterval--;
+    }
+    else {
+        secondsLeftInCurrentInterval--;
+    }
+    passThroughs++;
+    var displaySec = secondsLeftInCurrentInterval;
+    if (displaySec < 10 ) {displaySec = "0" + displaySec};
+    $('#timeInCurrentInterval').text(minutesLeftInCurrentInterval + ":" + displaySec);
+    if (minutesLeftInCurrentInterval == 0 && secondsLeftInCurrentInterval == 0)
+    {
+      passThroughs = 0;
+      currentIntervalNumber += 1;
+      setLevel();
+    }
+
+
     return true;
   };
 
@@ -46,6 +72,32 @@ var runTrack = function() {
     var percentageOfWhole = Math.ceil((newWidth/parseInt(progContainerWidth)) * 100);
     $('.progress').filter('.totalCompletion').find('.progress-bar').width(newWidth).text(percentageOfWhole + "%");
   }
+
+
+  function setLevel(level) {
+    $('#currentIntervalNum').text(currentIntervalNumber);
+    var newIntensity = pub.intervalData.intervals[currentIntervalNumber - 1].intervalIntensity;
+    $('#LEVEL').text(" LEVEL " + newIntensity);
+    var newLevelWidth = (newIntensity) * 10;
+    $("#intensityBar").find(".progress-bar").width( newLevelWidth + "%");
+    if (newIntensity == 1 && newIntensity <= 4){
+      $("#intensityBar").find(".progress-bar").css("background-color" , "green" );
+    }
+
+    else if (newIntensity < 7) {
+      $("#intensityBar").find(".progress-bar").css("background-color" , "orange" );
+    }
+
+    else {
+      $("#intensityBar").find(".progress-bar").css("background-color" , "red" );
+    }
+  }
+  function trackComplete() {
+    $('#timeInCurrentInterval').text("Done!");
+    $("#intensityBar").find(".progress-bar").width(0);
+    $('#LEVEL').text("");
+
+  }
   return pub;
 };
 
@@ -54,15 +106,32 @@ $(document).ready(function(){
   run.getData();
 
   setTimeout(run.intervals, 300);
-
+  var seconds = 0;
+  var minutes = 0;
   var timing = setInterval(function () {
-    var stop = run.nextInterval();
-    var numIntervals = run.intervalData.intervals.length;
-    var intervalPercentage = (100/numIntervals) / 100;
-    run.advanceProgress(intervalPercentage);
+
+    if  (seconds == 59) {
+      minutes++;
+      seconds = 0;
+    }
+
+    else {
+      seconds++;
+    }
+    displaySeconds = seconds;
+    if (displaySeconds < 10) {displaySeconds = "0" + displaySeconds}
+    //console.log(minutes + ":" + displaySeconds);
+    var stop = run.nextInterval(minutes);
+    //var numIntervals = run.intervalData.intervals.length;
+    //var intervalPercentage = (100/numIntervals) / 100;
+    //run.advanceProgress(intervalPercentage);
+
+    //Precentage a second is of the total time.
+    perc = 1 / (run.totalLength * 60);
+    run.advanceProgress(perc)
 
 
-    //console.log(stop);
+
     if (!stop) {
     clearInterval(timing);
     }

@@ -6306,5 +6306,10 @@ div.intervalTable thead {
 #intensityBar {
   height: 2.8em;
 }
+#timeInCurrentInterval,
+#LEVEL,
+#intervalRange {
+  font-size: 5em;
+}
 
 /*# sourceMappingURL=app.css.map */
