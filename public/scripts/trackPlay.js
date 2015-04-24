@@ -65,12 +65,12 @@ var runTrack = function() {
       pub.totalLength = minutes;
 
   };
-  pub.advanceProgress = function(percent) {
-    var progWidth  =  $('.progress').filter('.totalCompletion').find('.progress-bar').css("width");
-    var progContainerWidth  =  $('.progress').filter('.totalCompletion').css("width");
-    var newWidth = (percent * parseInt(progContainerWidth)) + parseInt(progWidth);
-    var percentageOfWhole = Math.ceil((newWidth/parseInt(progContainerWidth)) * 100);
-    $('.progress').filter('.totalCompletion').find('.progress-bar').width(newWidth).text(percentageOfWhole + "%");
+  pub.advanceProgress = function(percent, minutes, seconds) {
+    totalSeconds = (minutes * 60 ) + seconds;
+    newWidth = (totalSeconds / (pub.totalLength * 60)) * 100;
+    $('.progress').filter('.totalCompletion').find('.progress-bar').width(newWidth + "%").text(Math.ceil(newWidth) + "%");
+    if (seconds < 10) {seconds = "0" + seconds}
+    $('#totalTimeLeft').text(minutes + ":" + seconds + " OF ");
   }
 
 
@@ -128,7 +128,7 @@ $(document).ready(function(){
 
     //Precentage a second is of the total time.
     perc = 1 / (run.totalLength * 60);
-    run.advanceProgress(perc)
+    run.advanceProgress(perc, minutes, seconds)
 
 
 
