@@ -108,6 +108,8 @@ $(document).ready(function(){
   setTimeout(run.intervals, 300);
   var seconds = 0;
   var minutes = 0;
+  $("#startButton").one("click" , function() {
+  $(this).slideUp();
   var timing = setInterval(function () {
 
     if  (seconds == 59) {
@@ -136,7 +138,7 @@ $(document).ready(function(){
     clearInterval(timing);
     }
   },1000);
-
+});
 
 
 
