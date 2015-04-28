@@ -19,7 +19,7 @@ class TracksController extends Controller {
 
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of all the tracks.
 	 *
 	 * @return Response
 	 */
@@ -31,7 +31,7 @@ class TracksController extends Controller {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Show the form for creating a track.
 	 *
 	 * @return Response
 	 */
@@ -41,7 +41,7 @@ class TracksController extends Controller {
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Store a newly created track in storage.
 	 *
 	 * @return Response
 	 */
@@ -55,7 +55,7 @@ class TracksController extends Controller {
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Display the specified track .
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -68,7 +68,7 @@ class TracksController extends Controller {
 
 	}
 	/*
-	*
+	* Return the interval data for the specified track
 	*
 	*
 	*
