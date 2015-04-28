@@ -1,7 +1,7 @@
 console.log("Track Creation");
 
 $(document).ready(function(){
-
+//Even handlers.
 $("form").on("click" , "#addInterval", function(){
   addInterval();
 });
@@ -19,7 +19,7 @@ $("div#intervalContainer").find(".intervalItem").first().slideDown();
 
 });
 
-
+//Adds an interval form element to the form.
 function addInterval() {
   var numIntervals = parseInt($("input#numberOfIntervals").val());
   $("input#numberOfIntervals").val(numIntervals + 1);
@@ -33,7 +33,7 @@ function addInterval() {
   $("div#intervalContainer").find(".intervalItem").last().slideDown();
 }
 
-
+//Deletion of an interval item
 function removeInterval(button) {
   var ITEM = $(button).closest(".intervalItem")
   ITEM.slideUp(function(){
@@ -47,6 +47,7 @@ function removeInterval(button) {
 
 }
 
+//Reorders the numbers of the intervals so there is no gaps.
 function reorderIntervals() {
   var intervalSections = $("div#intervalContainer").find(".intervalItem");
   console.log("#");
@@ -60,6 +61,7 @@ function reorderIntervals() {
   }
 }
 
+//Updates information on page when form elements change
 function timeAndData() {
   var intervalSections = $("div#intervalContainer").find(".intervalItem");
   var totalTime = 0;
@@ -75,7 +77,7 @@ function timeAndData() {
   $("form").find("input#length").val(totalTime);
   }
 }
-
+//The actual intervaldata element is filled here.
 function fillIntervalData() {
   var intervalSections = $("div#intervalContainer").find(".intervalItem");
   var data = new Object();

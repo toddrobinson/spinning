@@ -1,3 +1,11 @@
+/*
+runTrack
+Sets up the methods associated with running the track
+
+
+Returns pub, which has the public methods and variables.
+*/
+
 var runTrack = function() {
   var pub  = {};
   var currentIntervalNumber = 1;
@@ -5,6 +13,7 @@ var runTrack = function() {
   var secondsLeftInCurrentInterval = 0;
   var passThroughs = 0;
 
+  //Get the data for the track that is on the page.
   pub.getData = function () {
   var trackID = $(".trackTitle").attr("trackid");
   var trackUrl = "/tracks/intervals/" + trackID;
@@ -19,7 +28,7 @@ var runTrack = function() {
   });
 };
 
-
+  //Advances to the next interval if it is time.
   pub.nextInterval = function(totalMinutesPassed) {
     if (currentIntervalNumber >= pub.intervalData.intervals.length && totalMinutesPassed == pub.totalLength)
     {
@@ -54,9 +63,9 @@ var runTrack = function() {
     return true;
   };
 
+  //Total time from the intervals
   pub.intervals = function() {
       var minutes = 0;
-      //console.log(inn.intervals);
       for (var prop in pub.intervalData.intervals)
       {
         intervalLength = parseInt(pub.intervalData.intervals[prop].intervalLength);
@@ -65,6 +74,7 @@ var runTrack = function() {
       pub.totalLength = minutes;
 
   };
+  //Moves overall progress bar based on completed time
   pub.advanceProgress = function(percent, minutes, seconds) {
     totalSeconds = (minutes * 60 ) + seconds;
     newWidth = (totalSeconds / (pub.totalLength * 60)) * 100;
@@ -73,7 +83,7 @@ var runTrack = function() {
     $('#totalTimeLeft').text(minutes + ":" + seconds + " OF ");
   }
 
-
+  //Sets the level progress bar, and its color based on level.
   function setLevel(level) {
     $('#currentIntervalNum').text(currentIntervalNumber);
     var newIntensity = pub.intervalData.intervals[currentIntervalNumber - 1].intervalIntensity;
@@ -92,6 +102,7 @@ var runTrack = function() {
       $("#intensityBar").find(".progress-bar").css("background-color" , "red" );
     }
   }
+  //At the completion of the track
   function trackComplete() {
     $('#timeInCurrentInterval').text("Done!");
     $("#intensityBar").find(".progress-bar").width(0);
@@ -100,7 +111,7 @@ var runTrack = function() {
   }
   return pub;
 };
-
+//Runs when doc is laoded
 $(document).ready(function(){
   var run = runTrack();
   run.getData();
@@ -108,6 +119,8 @@ $(document).ready(function(){
   setTimeout(run.intervals, 300);
   var seconds = 0;
   var minutes = 0;
+  //Start the running of the track when the user clicks start.
+  //Function runs every second.
   $("#startButton").one("click" , function() {
   $(this).slideUp();
   var timing = setInterval(function () {
@@ -122,12 +135,7 @@ $(document).ready(function(){
     }
     displaySeconds = seconds;
     if (displaySeconds < 10) {displaySeconds = "0" + displaySeconds}
-    //console.log(minutes + ":" + displaySeconds);
     var stop = run.nextInterval(minutes);
-    //var numIntervals = run.intervalData.intervals.length;
-    //var intervalPercentage = (100/numIntervals) / 100;
-    //run.advanceProgress(intervalPercentage);
-
     //Precentage a second is of the total time.
     perc = 1 / (run.totalLength * 60);
     run.advanceProgress(perc, minutes, seconds)

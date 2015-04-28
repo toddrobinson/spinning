@@ -1,8 +1,10 @@
 
 $(document).ready(function(){
+  //Event handler for showing table
   $("thead").on("click", function(){
     $("table").find("tbody").fadeToggle();
   });
+  //Getting associated track infromation
   var trackID = $(".trackTitle").attr("trackid");
   var trackUrl = "/tracks/intervals/" + trackID;
   var coord = [];
@@ -16,7 +18,7 @@ $(document).ready(function(){
     },
     error: function() {console.log("It's dead, Jim");},
   });
-
+//Uses the google charts library to create a graph of the interval
   function createChart(data) {
 
       data = JSON.parse(data);
@@ -35,7 +37,7 @@ $(document).ready(function(){
 
       return dataArr;
   }
-
+ //Creation of table using the interval data
   function createTable(data) {
     data = JSON.parse(data);
     for (var i = 0 ; i < data.intervals.length ; i++) {
@@ -46,7 +48,7 @@ $(document).ready(function(){
       $("table.table").find("tbody").append(row);
     }
   }
-
+  //ACtual google charts function to create the graph
   function drawGraph() {
 
     google.load('visualization', '1.1', {packages: ['line'], 'callback' : drawLineColors});
